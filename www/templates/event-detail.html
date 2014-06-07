@@ -1,0 +1,31 @@
+<ion-view title="{{event.name}}">
+  <ion-content has-header="true" padding="true">
+      <ion-list>
+          <div class="item item-divider">
+              <h2 class="title">Bookings</h2>
+          </div>
+          <ion-item ng-repeat="booking in bookings" type="item-text-wrap">
+              <div class="item-button-right">
+                  {{booking.artist.name}}
+                  <button class="button button-positive" ng-click="dropDown(booking)">
+                      <i class="icon ion-arrow-up-b" ng-show="activeDropDown(booking)"></i>
+                      <i class="icon ion-arrow-down-b" ng-hide="activeDropDown(booking)"></i>
+                  </button>
+              </div>
+              <div ng-show="activeDropDown(booking)">
+                  <div class="card" >
+                      <div class="item item-text-wrap">
+                          <p>stage : {{booking.stage}}</p>
+                          <p>day : {{booking.day}}</p>
+
+                      </div>
+                  </div>
+                  <a class="button button-block button-positive" ng-href="#/tab/artist/{{booking.artist.id}}">
+                      View artist profile
+                  </a>
+              </div>
+
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
